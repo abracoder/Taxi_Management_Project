@@ -1,0 +1,74 @@
+<%-include("partials/header") %>
+    <form action="/taxi" method="POST">
+        <div class="form-group">
+            <label for="licensedet">LICENSE</label>
+            <input type="text" name="license" class="form-control" id="licensedetails">
+        </div>
+        <div class="form-group">
+            <label for="driveridexample">Driver ID</label>
+            <input type="number" name="driverID" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="car condtion">CAR CONDITION</label>
+            <input type="number" name="carCondition" class="form-control" min="0" max="10">
+        </div>
+        <div class="form-group">
+            <label for="carmodel">MODEL</label>
+            <input type="text" name="modelNo" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Insert</button>
+
+    </form>
+    <table id="table" class="center">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Model</th>
+                <th>License</th>
+                <th>Driver ID</th>
+                <th>Car Condtition</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% result.forEach(function (user){ %>
+                <form action="/deletetaxi" method="post">
+                    <div class="item">
+                        <tr>
+                            <td>
+                                <!-- <input type="checkbox" name="checkbox" value="<%= user.id %>" onChange="this.form.submit()"> -->
+                                <%= user.id %>
+                            </td>
+                            <td>
+                                <%= user.model %>
+                            </td>
+                            <td>
+                                <%= user.license %>
+                            </td>
+                            <td>
+                                <%= user.driv_id %>
+                            </td>
+                            <td>
+                                <%= user.car_condition %>
+                            </td>
+                            <td>
+                                <a class="btn btn-success edit" href="./edittaxi/<%= user.id %>">Edit</a>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="checkbox" name="checkbox" value="<%= user.id %>" onChange="this.form.submit()">
+                                    Delete
+
+                                </label>
+                                <!-- <a class="btn btn-danger delete" onclick="return alert('Are You sure?')" href="#">Del</a> -->
+
+                            </td>
+                        </tr>
+                    </div>
+                    <input type="hidden" name="listName" value="<%= user.id %>"></input>
+                </form>
+                <%  }) %>
+        </tbody>
+    </table>
+    </body>
+
+    </html>

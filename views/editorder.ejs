@@ -1,0 +1,34 @@
+<%-include("partials/header") %>
+    <form action="/updateorder/<%=id %>" method="POST">
+        <div class="form-group">
+            <label for="licensedet">Expense Date</label>
+            <input type="text" name="exp_date" class="form-control" value="<%= date %>">
+        </div>
+        <div class="form-group">
+            <label for="driveridexample">Client ID</label>
+            <input type="number" name="clintId" class="form-control" value="<%= clintid %>">
+        </div>
+        <div class="form-group">
+            <label for="expense amount">Taxi ID</label>
+            <input type="number" name="taxi" class="form-control" min="0" value="<%= taxiid %>">
+        </div>
+        <div class="form-group">
+            <label for="carmodel">Source</label>
+            <input type="text" name="source" class="form-control" value="<%= source %>">
+            <!-- <textarea name="description" rows="4" cols="50"></textarea> -->
+        </div>
+        <div class="form-group">
+            <label for="carmodel">Destination</label>
+            <input type="text" name="destination" class="form-control" value="<%= destination %>">
+            <!-- <textarea name="description" rows="4" cols="50"></textarea> -->
+        </div>
+        <div class="form-group">
+            <label for="expense amount">Amount</label>
+            <input type="number" name="amount" class="form-control" value="<%= amount %>">
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+
+    </form>
+    </body>
+
+    </html>

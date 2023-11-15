@@ -1,0 +1,74 @@
+<%-include("partials/header") %>
+    <form action="/expense" method="POST">
+        <div class="form-group">
+            <label for="licensedet">Expense Date</label>
+            <input type="date" name="exp_date" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="driveridexample">Driver ID</label>
+            <input type="number" name="driverID" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="expense amount">Amount</label>
+            <input type="number" name="amount" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="carmodel">Description</label>
+            <input type="text" name="description" class="form-control">
+            <!-- <textarea name="description" rows="4" cols="50"></textarea> -->
+        </div>
+        <button type="submit" class="btn btn-primary">Insert</button>
+
+    </form>
+    <table id="table" class="center">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Expense Date</th>
+                <th>Amount</th>
+                <th>Driver ID</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% result.forEach(function (user){ %>
+                <form action="/deleteexpense" method="post">
+                    <div class="item">
+                        <tr>
+                            <td>
+                                <!-- <input type="checkbox" name="checkbox" value="<%= user.id %>" onChange="this.form.submit()"> -->
+                                <%= user.id %>
+                            </td>
+                            <td>
+                                <%= user.exp_date %>
+                            </td>
+                            <td>
+                                <%= user.amount %>
+                            </td>
+                            <td>
+                                <%= user.driv_ID %>
+                            </td>
+                            <td>
+                                <%= user.descrption %>
+                            </td>
+                            <td>
+                                <a class="btn btn-success edit" href="./editexpense/<%= user.id %>">Edit</a>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="checkbox" name="checkbox" value="<%= user.id %>" onChange="this.form.submit()">Delete
+
+                                </label>
+                                <!-- <a class="btn btn-danger delete" onclick="return alert('Are You sure?')" href="#">D</a> -->
+
+                            </td>
+                        </tr>
+                    </div>
+                    <input type="hidden" name="listName" value="<%= user.id %>"></input>
+                </form>
+                <%  }) %>
+        </tbody>
+    </table>
+    </body>
+
+    </html>

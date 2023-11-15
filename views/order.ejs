@@ -1,0 +1,87 @@
+<%-include("partials/header") %>
+    <form action="/order" method="POST">
+        <div class="form-group">
+            <label for="licensedet">Expense Date</label>
+            <input type="date" name="exp_date" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="driveridexample">Client ID</label>
+            <input type="number" name="clintId" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="expense amount">Taxi ID</label>
+            <input type="number" name="taxi" class="form-control" min="0">
+        </div>
+        <div class="form-group">
+            <label for="carmodel">Source</label>
+            <input type="text" name="source" class="form-control">
+            <!-- <textarea name="description" rows="4" cols="50"></textarea> -->
+        </div>
+        <div class="form-group">
+            <label for="carmodel">Destination</label>
+            <input type="text" name="destination" class="form-control">
+            <!-- <textarea name="description" rows="4" cols="50"></textarea> -->
+        </div>
+        <div class="form-group">
+            <label for="expense amount">Amount</label>
+            <input type="number" name="amount" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Insert</button>
+
+    </form>
+    <table id="table" class="center">
+        <thead>
+            <tr>
+                <th>Book Id</th>
+                <th>Expense Date</th>
+                <th>Amount</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Taxi Id</th>
+                <th>Client ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% result.forEach(function (user){ %>
+                <form action="/deleteorder" method="post">
+                    <div class="item">
+                        <tr>
+                            <td>
+                                <!-- <input type="checkbox" name="checkbox" value="<%= user.book_id %>" onChange="this.form.submit()"> -->
+                                <%= user.book_id %>
+                            </td>
+                            <td>
+                                <%= user.exp_date %>
+                            </td>
+                            <td>
+                                <%= user.amount %>
+                            </td>
+                            <td>
+                                <%= user.sorce %>
+                            </td>
+                            <td>
+                                <%= user.destintion %>
+                            </td>
+                            <td>
+                                <%= user.taxi %>
+                            </td>
+                            <td>
+                                <%= user.clint_id %>
+                            </td>
+                            <td>
+                                <a class="btn btn-success edit" href="./editorder/<%= user.book_id %>">Edit</a>
+                            </td>
+                            <td>
+                                <label><input type="checkbox" name="checkbox" value="<%= user.book_id %>" onChange="this.form.submit()">Delete</label>
+
+                            </td>
+                        </tr>
+                    </div>
+                    <input type="hidden" name="listName" value="<%= user.book_id %>"></input>
+                </form>
+                <%  }) %>
+        </tbody>
+    </table>
+    </body>
+
+    </html>

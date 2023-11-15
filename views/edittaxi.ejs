@@ -1,0 +1,24 @@
+<%-include("partials/header") %>
+    <form action="/updatetaxi/<%= id %>" method="POST">
+        <div class="form-group">
+            <label for="licensedet">LICENSE</label>
+            <input type="text" name="license" class="form-control" id="licensedetails" value="<%=license%>">
+        </div>
+        <div class="form-group">
+            <label for="driveridexample">Driver ID</label>
+            <input type="number" name="driverID" class="form-control" value="<%=driverid%>">
+        </div>
+        <div class="form-group">
+            <label for="car condtion">CAR CONDITION</label>
+            <input type="number" name="carCondition" class="form-control" min="0" max="10" value="<%=carcond%>">
+        </div>
+        <div class="form-group">
+            <label for="carmodel">MODEL</label>
+            <input type="text" name="modelNo" class="form-control" value="<%=model%>">
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+
+    </form>
+    </body>
+
+    </html>
